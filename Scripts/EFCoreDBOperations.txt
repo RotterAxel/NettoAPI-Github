@@ -1,0 +1,12 @@
+﻿Add New Migration
+dotnet ef migrations add <MIGRATION-NAME> -c InsuranceDbContext -o Persistence/Migrations/Insurance
+
+Update Database
+dotnet ef database update -c InsuranceDbContext
+
+Revert Last Unapplied Migration
+dotnet ef migrations remove -c InsuranceDbContext
+
+Revert Applied Migration (Update DB was Called)
+dotnet ef database update <previous-migration-name> -c InsuranceDbContext
+dotnet ef migrations remove -c InsuranceDbContext

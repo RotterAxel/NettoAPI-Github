@@ -1,0 +1,4017 @@
+{
+	"info": {
+		"_postman_id": "361d187b-2f80-417d-9f0a-0f313a309a0d",
+		"name": "InsuranceAPI - Insurance API",
+		"description": "Administration of Insurance Data and Tool to get new Customers based on Analytics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Get Admin Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"Admin_Token\", jsonResponse.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "api.admin@localhost",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "postman",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "insurance-scope",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{Postman Secret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{keycloakUrl}}/auth/realms/Insurance/protocol/openid-connect/token",
+									"host": [
+										"{{keycloakUrl}}"
+									],
+									"path": [
+										"auth",
+										"realms",
+										"Insurance",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Bearbeiter Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"Bearbeiter_Token\", jsonResponse.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "insurance.bearbeiter@localhost",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "postman",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "insurance-scope",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{Postman Secret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{keycloakUrl}}/auth/realms/Insurance/protocol/openid-connect/token",
+									"host": [
+										"{{keycloakUrl}}"
+									],
+									"path": [
+										"auth",
+										"realms",
+										"Insurance",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Vermittler Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"Vertriebler_Token\", jsonResponse.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "vermittler@localhost",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "postman",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "insurance-api-access",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "client_secret",
+											"value": "{{Postman Secret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{keycloakUrl}}/auth/realms/Insurance/protocol/openid-connect/token",
+									"host": [
+										"{{keycloakUrl}}"
+									],
+									"path": [
+										"auth",
+										"realms",
+										"Insurance",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Neuer Vermittler Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"NeuerVertriebler_Token\", jsonResponse.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "neuer.vermittler@localhost",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "postman",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "insurance-api-access",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "client_secret",
+											"value": "{{Postman Secret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{keycloakUrl}}/auth/realms/Insurance/protocol/openid-connect/token",
+									"host": [
+										"{{keycloakUrl}}"
+									],
+									"path": [
+										"auth",
+										"realms",
+										"Insurance",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Neuer Vermittler 2 (Mit Persönlichen Daten) Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"NeuerVertriebler_Token\", jsonResponse.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "neuervermittler.mpd@localhost",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "postman",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "insurance-api-access",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "client_secret",
+											"value": "{{Postman Secret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{keycloakUrl}}/auth/realms/Insurance/protocol/openid-connect/token",
+									"host": [
+										"{{keycloakUrl}}"
+									],
+									"path": [
+										"auth",
+										"realms",
+										"Insurance",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AdminBackend",
+					"item": [
+						{
+							"name": "Kunden",
+							"item": [
+								{
+									"name": "/api/AdminKunden",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Admin_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/AdminKunden",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"AdminKunden"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/KundenControllers",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"KundenControllers"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n {\n  \"id\": -854330,\n  \"familienstand\": \"id\"\n },\n {\n  \"id\": 90472505,\n  \"familienstand\": \"laboris cupidatat cillum exercitation ad\"\n }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Vermittler",
+							"item": [
+								{
+									"name": "Dokument",
+									"item": [
+										{
+											"name": "/api/AdminVermittler/:id/Dokument/:dokumentId",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{Admin_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminVermittler/:id/Dokument/:dokumentId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminVermittler",
+														":id",
+														"Dokument",
+														":dokumentId"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"type": "string",
+															"description": "(Required) "
+														},
+														{
+															"key": "dokumentId",
+															"value": "1",
+															"type": "string",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"name\": \"ea dolore ad enim\",\n \"dokuemntenTypId\": 38663663,\n \"dokumentenTyp\": \"ut consequat eu exercitation velit\",\n \"bearbeitungsstatus\": \"nostrud\",\n \"fileExtension\": \"consectetur enim Lorem aute\",\n \"data\": \"aliqua\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/AdminVermittler/:id/Dokument/:dokumentId (Update Bearbeitungsstatus)",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{Admin_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"vermittlerId\": 1,\n    \"dokumentId\": 1,\n    \"bearbeitungsstatus\": \"MussÜberarbeitetWerden\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminVermittler/:id/Dokument/:dokumentId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminVermittler",
+														":id",
+														"Dokument",
+														":dokumentId"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"type": "string",
+															"description": "(Required) "
+														},
+														{
+															"key": "dokumentId",
+															"value": "1",
+															"type": "string",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"dokumentId\": \"<integer>\",\n    \"bearbeitungsstatus\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"fugiat occaecat dolor\",\n \"title\": \"est voluptate\",\n \"status\": 89567244,\n \"detail\": \"culpa Duis\",\n \"instance\": \"est cillum eu fugiat\"\n}"
+												},
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"dokumentId\": \"<integer>\",\n    \"bearbeitungsstatus\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"dokumentId\": \"<integer>\",\n    \"bearbeitungsstatus\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"fugiat occaecat dolor\",\n \"title\": \"est voluptate\",\n \"status\": 89567244,\n \"detail\": \"culpa Duis\",\n \"instance\": \"est cillum eu fugiat\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"dokumentId\": \"<integer>\",\n    \"bearbeitungsstatus\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"fugiat occaecat dolor\",\n \"title\": \"est voluptate\",\n \"status\": 89567244,\n \"detail\": \"culpa Duis\",\n \"instance\": \"est cillum eu fugiat\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/AdminVermittler/:id/Dokument",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{Admin_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"vermittlerId\": 1,\n    \"name\": \"NewDoc\",\n    \"dokumentArtId\": 3,\n    \"bearbeitungsstatus\": \"ZuPrüfen\",\n    \"fileExtension\": \"pdf\",\n    \"data\": \"dGVzdGRvYw==\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminVermittler/:id/Dokument",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminVermittler",
+														":id",
+														"Dokument"
+													],
+													"variable": [
+														{
+															"description": "(Required) ",
+															"key": "id",
+															"type": "string",
+															"value": "1"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArt\": \"<string>\",\n    \"bearbeitungsstatus\": \"<string>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "90821334"
+												}
+											]
+										},
+										{
+											"name": "/api/AdminVermittler/:id/Dokument/:dokumentId",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{Admin_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"dokumentId\": 1,\n    \"vermittlerId\": 1\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminVermittler/:id/Dokument/:dokumentId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminVermittler",
+														":id",
+														"Dokument",
+														":dokumentId"
+													],
+													"variable": [
+														{
+															"description": "(Required) ",
+															"key": "id",
+															"type": "string",
+															"value": "1"
+														},
+														{
+															"description": "(Required) ",
+															"key": "dokumentId",
+															"type": "string",
+															"value": "1"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"dokumentId\": \"<integer>\",\n    \"vermittlerId\": \"<integer>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"fugiat occaecat dolor\",\n \"title\": \"est voluptate\",\n \"status\": 89567244,\n \"detail\": \"culpa Duis\",\n \"instance\": \"est cillum eu fugiat\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"dokumentId\": \"<integer>\",\n    \"vermittlerId\": \"<integer>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"fugiat occaecat dolor\",\n \"title\": \"est voluptate\",\n \"status\": 89567244,\n \"detail\": \"culpa Duis\",\n \"instance\": \"est cillum eu fugiat\"\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"dokumentId\": \"<integer>\",\n    \"vermittlerId\": \"<integer>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"fugiat occaecat dolor\",\n \"title\": \"est voluptate\",\n \"status\": 89567244,\n \"detail\": \"culpa Duis\",\n \"instance\": \"est cillum eu fugiat\"\n}"
+												},
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"dokumentId\": \"<integer>\",\n    \"vermittlerId\": \"<integer>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/Vermittler/:id/Dokument/:dokumentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Vermittler",
+																":id",
+																"Dokument",
+																":dokumentId"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "dokumentId"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "​/api​/AdminVermittler",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Admin_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/AdminVermittler",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"AdminVermittler"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Vertriebler",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Vertriebler"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n {\n  \"rowVersion\": \"1991-04-27T22:26:52.554Z\",\n  \"registrierungsstatus\": \"ut officia\",\n  \"userVertrieblerÜbersichtDto\": {\n   \"rowVersion\": \"2003-09-22T11:38:06.225Z\",\n   \"eMail\": \"culpa nisi sit\",\n   \"vorname\": \"magna aliquip aute\",\n   \"nachname\": \"cupidatat Ut in magna\",\n   \"anrede\": \"ea minim\"\n  }\n },\n {\n  \"rowVersion\": \"2017-08-15T01:21:04.664Z\",\n  \"registrierungsstatus\": \"exercitation\",\n  \"userVertrieblerÜbersichtDto\": {\n   \"rowVersion\": \"1981-11-03T18:12:58.520Z\",\n   \"eMail\": \"laboris id\",\n   \"vorname\": \"ex voluptate\",\n   \"nachname\": \"reprehenderit Excepteur nostrud culpa\",\n   \"anrede\": \"dolore exercitation ullamco\"\n  }\n }\n]"
+										}
+									]
+								},
+								{
+									"name": "/api/AdminVermittler/:id",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Admin_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/AdminVermittler/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"AdminVermittler",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"type": "string",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Vermittler/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Vermittler",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n {\n  \"rowVersion\": \"1974-05-11T18:44:14.725Z\",\n  \"id\": 25260777,\n  \"registrierungsstatus\": \"cillum consequat elit dolor adipisicing\",\n  \"bestandsProvisionssatz\": -55589581.03957306,\n  \"abschlussProvisionssatz\": -20114654.656721115,\n  \"istAktiv\": false,\n  \"firmenname\": \"Excepteur eu qui aliqua\",\n  \"bevollmächtigter\": \"ut\",\n  \"userVermittlerÜbersichtDto\": {\n   \"rowVersion\": \"1944-11-09T02:59:27.093Z\",\n   \"eMail\": \"Duis sunt eiusmod minim sed\",\n   \"vorname\": \"aliqua elit\",\n   \"nachname\": \"adipisicing\",\n   \"anrede\": \"reprehenderit dolor deserunt consectetur\"\n  }\n },\n {\n  \"rowVersion\": \"1989-10-26T10:33:54.597Z\",\n  \"id\": -99273237,\n  \"registrierungsstatus\": \"nulla ea\",\n  \"bestandsProvisionssatz\": -87084370.1945712,\n  \"abschlussProvisionssatz\": -82567221.46087733,\n  \"istAktiv\": false,\n  \"firmenname\": \"aute eu Duis consectetur\",\n  \"bevollmächtigter\": \"aute\",\n  \"userVermittlerÜbersichtDto\": {\n   \"rowVersion\": \"2013-01-29T15:08:19.252Z\",\n   \"eMail\": \"dol\",\n   \"vorname\": \"elit in\",\n   \"nachname\": \"Lorem ea\",\n   \"anrede\": \"proident ea\"\n  }\n }\n]"
+										}
+									]
+								},
+								{
+									"name": "/api/AdminVermittler/:id",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Admin_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 1,\n    \"anrede\": \"Herr\",\n    \"vorname\": \"Vermittler\",\n    \"nachname\": \"Bevollmächtigter\",\n    \"email\": \"Vermittler@localhost\",\n    \"telefon\": \"123241241\",\n    \"fax\": null,\n    \"vermittlerRegistrierungsstatus\": \"RegistrierungGenehmigt\",\n    \"bestandsProvisionssatz\": 60,\n    \"abschlussProvisionssatz\": 60,\n    \"istAktiv\": true,\n    \"iban\": \"DE00000000000000000000\",\n    \"bankname\": \"Bankname\",\n    \"bic\": \"DEUTDEDB123\",\n    \"straße\": \"VermittlerStraße\",\n    \"hausnummer\": \"1\",\n    \"plz\": \"123456\",\n    \"ort\": \"Bremen\",\n    \"land\": \"Deutschland\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/AdminVermittler/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"AdminVermittler",
+												":id"
+											],
+											"variable": [
+												{
+													"description": "(Required) ",
+													"key": "id",
+													"type": "string",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"id\": \"<integer>\",\n    \"anrede\": \"<integer>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"fax\": \"<string>\",\n    \"userRowVersion\": \"<string>\",\n    \"vermittlerRegistrierungsstatus\": \"<integer>\",\n    \"bestandsProvisionssatz\": \"<float>\",\n    \"abschlussProvisionssatz\": \"<float>\",\n    \"istAktiv\": \"<boolean>\",\n    \"firmenname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"bic\": \"<string>\",\n    \"bankverbindungRowversion\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"land\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Vermittler/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Vermittler",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n {\n  \"rowVersion\": \"1973-09-20T01:40:40.979Z\",\n  \"id\": -72556029,\n  \"registrierungsstatus\": \"in dolore quis aliquip\",\n  \"bestandsProvisionssatz\": -14593610.294741392,\n  \"abschlussProvisionssatz\": 21556203.915064648,\n  \"istAktiv\": false,\n  \"firmenname\": \"fugiat\",\n  \"bevollmächtigter\": \"adipisicing exercitation laborum aute ullamco\",\n  \"userVermittlerÜbersichtDto\": {\n   \"rowVersion\": \"1974-07-05T12:17:41.278Z\",\n   \"eMail\": \"do et nostrud\",\n   \"vorname\": \"aute laborum cill\",\n   \"nachname\": \"nulla dolore voluptate ex\",\n   \"anrede\": \"Lorem sunt consectetur mollit\"\n  }\n },\n {\n  \"rowVersion\": \"2018-11-15T03:23:47.438Z\",\n  \"id\": 12246352,\n  \"registrierungsstatus\": \"qui sunt labore\",\n  \"bestandsProvisionssatz\": -5944133.107562706,\n  \"abschlussProvisionssatz\": 96164293.43210173,\n  \"istAktiv\": false,\n  \"firmenname\": \"exercitation \",\n  \"bevollmächtigter\": \"in elit anim\",\n  \"userVermittlerÜbersichtDto\": {\n   \"rowVersion\": \"1971-02-01T02:21:24.599Z\",\n   \"eMail\": \"non enim tempor dolore\",\n   \"vorname\": \"qui nisi\",\n   \"nachname\": \"do voluptate eiusmod\",\n   \"anrede\": \"veniam id culpa ea quis\"\n  }\n }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Gesellschaft",
+							"item": [
+								{
+									"name": "/api/AdminGesellschaft",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Admin_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/AdminGesellschaft",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"AdminGesellschaft"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminGesellschaft",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminGesellschaft"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"tempor ea\",\n \"title\": \"incididunt magna in adipisicing sit\",\n \"status\": 76951127,\n \"detail\": \"Excepteur exercitation sint\",\n \"instance\": \"reprehenderit\"\n}"
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminGesellschaft",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminGesellschaft"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n {\n  \"id\": -90127962,\n  \"name\": \"elit in laborum aute\",\n  \"maximaleVergütungInProzent\": -2603667,\n  \"minimaleVergütungInProzent\": 31830011,\n  \"maximaleLaufzeitInJahren\": 60069062,\n  \"minimaleLaufzeitInJahren\": -4160122\n },\n {\n  \"id\": 58716456,\n  \"name\": \"aute veniam\",\n  \"maximaleVergütungInProzent\": 72375572,\n  \"minimaleVergütungInProzent\": 88333451,\n  \"maximaleLaufzeitInJahren\": -69911606,\n  \"minimaleLaufzeitInJahren\": -51137058\n }\n]"
+										}
+									]
+								},
+								{
+									"name": "/api/AdminGesellschaft",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Admin_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Gesellschaft TEst\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/AdminGesellschaft",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"AdminGesellschaft"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminGesellschaft",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminGesellschaft"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "92894430"
+										}
+									]
+								},
+								{
+									"name": "/api/AdminGesellschaft/:gesellschaftId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Admin_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 2,\n    \"name\": \"Bsp. Allianz\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/AdminGesellschaft/2",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"AdminGesellschaft",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminGesellschaft/:gesellschaftId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminGesellschaft",
+														":gesellschaftId"
+													],
+													"variable": [
+														{
+															"key": "gesellschaftId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"irure enim sint ipsum\",\n \"title\": \"aliqua\",\n \"status\": 65119220,\n \"detail\": \"quis aliqua esse\",\n \"instance\": \"sit sint incididunt\"\n}"
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/AdminGesellschaft/:gesellschaftId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"AdminGesellschaft",
+														":gesellschaftId"
+													],
+													"variable": [
+														{
+															"key": "gesellschaftId"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "VermittlerBackend",
+					"item": [
+						{
+							"name": "Profil",
+							"item": [
+								{
+									"name": "/api/VermittlerBackend/Profil",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{NeuerVertriebler_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/Profil",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												"Profil"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerBackend",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerBackend"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 993782,\n \"anrede\": \"in dolor esse\",\n \"vorname\": \"deserunt dolor sed\",\n \"nachname\": \"id adipisicing cupidatat fugiat\",\n \"email\": \"et labore\",\n \"telefon\": \"dolore\",\n \"fax\": \"officia reprehenderit Ut consequat\",\n \"vermittlerRegistrierungsstatus\": \"aliquip do\",\n \"bestandsProvisionssatz\": 16986131.33052343,\n \"abschlussProvisionssatz\": 87489439.08627972,\n \"istAktiv\": false,\n \"iban\": \"officia in dolor\",\n \"bankname\": \"nostrud aute laborum id\",\n \"bic\": \"ullamco dolor ut vel\",\n \"straße\": \"enim velit Ut dolor dol\",\n \"hausnummer\": \"eiusmod\",\n \"plz\": \"aute dolor\",\n \"ort\": \"fugiat \",\n \"land\": \"incid\",\n \"firmenId\": -42676003,\n \"firmenname\": \"consequat\",\n \"istBevollmächtigt\": false,\n \"vermittlerDokumentenUebersicht\": [\n  {\n   \"id\": -32893790,\n   \"name\": \"consequat ad\",\n   \"dokuemntenArtId\": -15143712,\n   \"dokumentenArtName\": \"pariatur nostrud nisi\",\n   \"bearbeitungsstatus\": \"enim\",\n   \"fileExtension\": \"dolor reprehenderit\"\n  },\n  {\n   \"id\": -40362619,\n   \"name\": \"veniam esse elit tempor\",\n   \"dokuemntenArtId\": -66366067,\n   \"dokumentenArtName\": \"culpa ad sunt irure\",\n   \"bearbeitungsstatus\": \"sit elit magna consectetur\",\n   \"fileExtension\": \"ad ut\"\n  }\n ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerBackend",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerBackend"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"deserunt\",\n \"title\": \"in cil\",\n \"status\": 49463319,\n \"detail\": \"voluptate cupidatat \",\n \"instance\": \"aute veniam voluptate reprehenderit\"\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerBackend",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerBackend"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"deserunt\",\n \"title\": \"in cil\",\n \"status\": 49463319,\n \"detail\": \"voluptate cupidatat \",\n \"instance\": \"aute veniam voluptate reprehenderit\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerBackend",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerBackend"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"deserunt\",\n \"title\": \"in cil\",\n \"status\": 49463319,\n \"detail\": \"voluptate cupidatat \",\n \"instance\": \"aute veniam voluptate reprehenderit\"\n}"
+										}
+									]
+								},
+								{
+									"name": "/api/VermittlerBackend/Profil",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Vertriebler_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"anrede\": \"Herr\",\n    \"telefon\": \"0174000000000\",\n    \"staatsangehörigkeitId\": 5,\n    \"geburtsort\": \"Pamplona\",\n    \"geburtsdatum\": \"1980-11-27\",\n    \"IhkRegistrierungsnummer\": \"TestRegnr\",\n    \"kontoinhaber\": null,\n    \"bankname\": \"TestBankname\",\n    \"iban\": \"TestIban\",\n    \"bic\": \"TestBic\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/Profil",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												"Profil"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"anrede\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"ihkRegistrierungsnummer\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerBackend/Profil",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerBackend",
+														"Profil"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"minim eu\",\n \"title\": \"ipsum esse ad do\",\n \"status\": -4897714,\n \"detail\": \"dolore dolor\",\n \"instance\": \"consectetur est cillum\"\n}"
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"anrede\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"ihkRegistrierungsnummer\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerBackend/Profil",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerBackend",
+														"Profil"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "90381279"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"anrede\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"ihkRegistrierungsnummer\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerBackend/Profil",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerBackend",
+														"Profil"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"minim eu\",\n \"title\": \"ipsum esse ad do\",\n \"status\": -4897714,\n \"detail\": \"dolore dolor\",\n \"instance\": \"consectetur est cillum\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"anrede\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"ihkRegistrierungsnummer\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerBackend/Profil",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerBackend",
+														"Profil"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"minim eu\",\n \"title\": \"ipsum esse ad do\",\n \"status\": -4897714,\n \"detail\": \"dolore dolor\",\n \"instance\": \"consectetur est cillum\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "VermittlerRegistrierung",
+							"item": [
+								{
+									"name": "Request In Reihenfolge Durchklicken",
+									"item": [
+										{
+											"name": "/api/VermittlerRegistrierung (CreateOrUpdate)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var response = parseInt(pm.response.json());\r",
+															"\r",
+															"pm.collectionVariables.set(\"NeuRegistrierterVermittlerId\", response);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{NeuerVertriebler_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"anrede\": \"Herr\",\n    \"vorname\": \"Neuer\",\n    \"nachname\": \"Vermittler\",\n    \"telefon\": \"0174000000000\",\n    \"staatsangehörigkeitId\": 5,\n    \"geburtsort\": \"Pamplona\",\n    \"geburtsdatum\": \"1980-11-27\",\n    \"IhkRegistrierungsnummer\": \"TestRegnr\",\n    \"straße\": \"Teststraße\",\n    \"hausnummer\": \"5\",\n    \"plz\": \"12345\",\n    \"ort\": \"TestOrt\",\n    \"kontoinhaber\": null,\n    \"bankname\": \"TestBankname\",\n    \"iban\": \"TestIban\",\n    \"bic\": \"TestBic\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"anrede\": \"<string>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"registrierungsNummerIhk\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"non commodo aliqua\",\n \"title\": \"amet qui ad magna\",\n \"status\": -21521568,\n \"detail\": \"enim irure\",\n \"instance\": \"exercitation ea\"\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"anrede\": \"<string>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"registrierungsNummerIhk\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung"
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"non commodo aliqua\",\n \"title\": \"amet qui ad magna\",\n \"status\": -21521568,\n \"detail\": \"enim irure\",\n \"instance\": \"exercitation ea\"\n}"
+												},
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"anrede\": \"<string>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"registrierungsNummerIhk\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "-33183605"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"anrede\": \"<string>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"registrierungsNummerIhk\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"non commodo aliqua\",\n \"title\": \"amet qui ad magna\",\n \"status\": -21521568,\n \"detail\": \"enim irure\",\n \"instance\": \"exercitation ea\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/VermittlerRegistrierung (CreateOrUpdate Mit Einladecode)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var response = parseInt(pm.response.json());\r",
+															"\r",
+															"pm.collectionVariables.set(\"NeuRegistrierterVermittlerId\", response);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{NeuerVertriebler_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"anrede\": \"Herr\",\n    \"vorname\": \"Neuer\",\n    \"nachname\": \"Vermittler\",\n    \"telefon\": \"0174000000000\",\n    \"staatsangehörigkeitId\": 1,\n    \"geburtsort\": \"Pamplona\",\n    \"geburtsdatum\": \"1980-11-27\",\n    \"ihkRegistrierungsnummer\": \"TestRegnummer\",\n    \"straße\": \"Teststraße\",\n    \"hausnummer\": \"5\",\n    \"plz\": \"12345\",\n    \"ort\": \"TestOrt\",\n    \"kontoinhaber\": null,\n    \"bankname\": \"TestBankname\",\n    \"iban\": \"TestIban\",\n    \"bic\": \"TestBic\",\n    \"eingeladenVonEinladeCode\": \"WgAA55grJGAGagrL2k0fsA==\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"anrede\": \"<string>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"registrierungsNummerIhk\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"non commodo aliqua\",\n \"title\": \"amet qui ad magna\",\n \"status\": -21521568,\n \"detail\": \"enim irure\",\n \"instance\": \"exercitation ea\"\n}"
+												},
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"anrede\": \"<string>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"registrierungsNummerIhk\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "-33183605"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"anrede\": \"<string>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"registrierungsNummerIhk\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung"
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"non commodo aliqua\",\n \"title\": \"amet qui ad magna\",\n \"status\": -21521568,\n \"detail\": \"enim irure\",\n \"instance\": \"exercitation ea\"\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"anrede\": \"<string>\",\n    \"vorname\": \"<string>\",\n    \"nachname\": \"<string>\",\n    \"telefon\": \"<string>\",\n    \"staatsangehörigkeitId\": \"<integer>\",\n    \"geburtsort\": \"<string>\",\n    \"geburtsdatum\": \"<dateTime>\",\n    \"registrierungsNummerIhk\": \"<string>\",\n    \"straße\": \"<string>\",\n    \"hausnummer\": \"<string>\",\n    \"plz\": \"<string>\",\n    \"ort\": \"<string>\",\n    \"kontoinhaber\": \"<string>\",\n    \"bankname\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"non commodo aliqua\",\n \"title\": \"amet qui ad magna\",\n \"status\": -21521568,\n \"detail\": \"enim irure\",\n \"instance\": \"exercitation ea\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Erfordeliches Dokument 1",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{NeuerVertriebler_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"vermittlerId\": {{NeuRegistrierterVermittlerId}},\n    \"name\": \"NewDocs\",\n    \"dokumentArtId\": 4,\n    \"fileExtension\": \"pdf\",\n    \"data\": \"dGVzdGRvYw==\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung",
+														":id",
+														"Dokument"
+													],
+													"variable": [
+														{
+															"description": "(Required) ",
+															"key": "id",
+															"type": "string",
+															"value": "{{NeuRegistrierterVermittlerId}}"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												},
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "48109322"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Erfordeliches Dokument 2",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{NeuerVertriebler_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"vermittlerId\": {{NeuRegistrierterVermittlerId}},\n    \"name\": \"NewDocs\",\n    \"dokumentArtId\": 3,\n    \"fileExtension\": \"pdf\",\n    \"data\": \"dGVzdGRvYw==\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung",
+														":id",
+														"Dokument"
+													],
+													"variable": [
+														{
+															"description": "(Required) ",
+															"key": "id",
+															"type": "string",
+															"value": "{{NeuRegistrierterVermittlerId}}"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												},
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "48109322"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Erfordeliches Dokument 3",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{NeuerVertriebler_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"vermittlerId\": {{NeuRegistrierterVermittlerId}},\n    \"name\": \"NewDocs\",\n    \"dokumentArtId\": 1,\n    \"fileExtension\": \"pdf\",\n    \"data\": \"dGVzdGRvYw==\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung",
+														":id",
+														"Dokument"
+													],
+													"variable": [
+														{
+															"description": "(Required) ",
+															"key": "id",
+															"type": "string",
+															"value": "{{NeuRegistrierterVermittlerId}}"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												},
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "48109322"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"vermittlerId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"dokumentArtId\": \"<integer>\",\n    \"fileExtension\": \"<string>\",\n    \"data\": \"<byte>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/:id/Dokument",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																":id",
+																"Dokument"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"sit ullamco\",\n \"title\": \"Lorem elit do\",\n \"status\": 51095676,\n \"detail\": \"ea laborum\",\n \"instance\": \"enim eu dolor dolor\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/VermittlerRegistrierung/RegistrierungBeenden",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{NeuerVertriebler_Token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung/RegistrierungBeenden",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung",
+														"RegistrierungBeenden"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/RegistrierungBeenden",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																"RegistrierungBeenden"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"reprehenderit ipsum aliqua ut\",\n \"title\": \"dolore adipisicing\",\n \"status\": 47444926,\n \"detail\": \"eu proident consequat\",\n \"instance\": \"deserunt fugiat velit elit dolore\"\n}"
+												},
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/RegistrierungBeenden",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																"RegistrierungBeenden"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "18020622"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/VermittlerRegistrierung/RegistrierungBeenden",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"VermittlerRegistrierung",
+																"RegistrierungBeenden"
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"reprehenderit ipsum aliqua ut\",\n \"title\": \"dolore adipisicing\",\n \"status\": 47444926,\n \"detail\": \"eu proident consequat\",\n \"instance\": \"deserunt fugiat velit elit dolore\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/VermittlerRegistrierung/EinladecodeValidierung/:einladecode",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{Admin_Token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerRegistrierung/EinladecodeValidierung/:einladecode",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerRegistrierung",
+												"EinladecodeValidierung",
+												":einladecode"
+											],
+											"variable": [
+												{
+													"key": "einladecode",
+													"value": "WgAA55grJGAGagrL2k0fsA=="
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung/EinladecodeValidierung/:einladecode",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung",
+														"EinladecodeValidierung",
+														":einladecode"
+													],
+													"variable": [
+														{
+															"key": "einladecode"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung/EinladecodeValidierung/:einladecode",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung",
+														"EinladecodeValidierung",
+														":einladecode"
+													],
+													"variable": [
+														{
+															"key": "einladecode"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung/EinladecodeValidierung/:einladecode",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung",
+														"EinladecodeValidierung",
+														":einladecode"
+													],
+													"variable": [
+														{
+															"key": "einladecode"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"sunt deserunt dolor\",\n \"title\": \"id culpa officia\",\n \"status\": -2508812,\n \"detail\": \"Lorem dolor pariatur magna amet\",\n \"instance\": \"cillum Duis et sit\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/VermittlerRegistrierung/EinladecodeValidierung/:einladecode",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"VermittlerRegistrierung",
+														"EinladecodeValidierung",
+														":einladecode"
+													],
+													"variable": [
+														{
+															"key": "einladecode"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"sunt deserunt dolor\",\n \"title\": \"id culpa officia\",\n \"status\": -2508812,\n \"detail\": \"Lorem dolor pariatur magna amet\",\n \"instance\": \"cillum Duis et sit\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/VermittlerBackend/:dokumentId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{NeuerVertriebler_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/VermittlerBackend/:dokumentId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"VermittlerBackend",
+										":dokumentId"
+									],
+									"variable": [
+										{
+											"key": "dokumentId",
+											"value": "150",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/:dokumentId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												":dokumentId"
+											],
+											"variable": [
+												{
+													"key": "dokumentId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"sint quis cillum\",\n \"title\": \"eiusmod minim amet\",\n \"status\": 40444040,\n \"detail\": \"tempor reprehenderit irure voluptate cupidatat\",\n \"instance\": \"commodo off\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/:dokumentId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												":dokumentId"
+											],
+											"variable": [
+												{
+													"key": "dokumentId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"name\": \"Duis labore\",\n \"dokuemntenArtId\": 10246155,\n \"dokumentenArt\": \"in nulla labore commodo cillum\",\n \"bearbeitungsstatus\": \"enim minim velit sint\",\n \"fileExtension\": \"veniam ad\",\n \"data\": \"dolor magna culpa\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/:dokumentId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												":dokumentId"
+											],
+											"variable": [
+												{
+													"key": "dokumentId"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"sint quis cillum\",\n \"title\": \"eiusmod minim amet\",\n \"status\": 40444040,\n \"detail\": \"tempor reprehenderit irure voluptate cupidatat\",\n \"instance\": \"commodo off\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/:dokumentId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												":dokumentId"
+											],
+											"variable": [
+												{
+													"key": "dokumentId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"sint quis cillum\",\n \"title\": \"eiusmod minim amet\",\n \"status\": 40444040,\n \"detail\": \"tempor reprehenderit irure voluptate cupidatat\",\n \"instance\": \"commodo off\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/VermittlerBackend/Policy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Vertriebler_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/VermittlerBackend/Policy",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"VermittlerBackend",
+										"Policy"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Vermittler/Policy",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Vermittler",
+												"Policy"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"istAktiv\": false,\n \"istGenehmigt\": true,\n \"istBevollmächtigter\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/VermittlerBackend/VermittlerGesellschaften",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Vertriebler_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/VermittlerBackend/VermittlerGesellschaften",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"VermittlerBackend",
+										"VermittlerGesellschaften"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/VermittlerGesellschaften",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												"VermittlerGesellschaften"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"consectetur qui\",\n \"title\": \"cillum in\",\n \"status\": -9621217,\n \"detail\": \"minim in\",\n \"instance\": \"sit commodo dolor\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/VermittlerGesellschaften",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												"VermittlerGesellschaften"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"vermittlerId\": -53002216,\n  \"gesellschaftName\": \"quis\",\n  \"vermittlerNo\": \"ipsum mollit\",\n  \"abschlussvergütung\": -3564376.31373927,\n  \"bestandsvergütung\": 45684988.546236694,\n  \"maxLaufzeitVergütung\": -21462654\n },\n {\n  \"vermittlerId\": 9111629,\n  \"gesellschaftName\": \"irure in non qui pariatur\",\n  \"vermittlerNo\": \"eiusmod enim voluptate esse\",\n  \"abschlussvergütung\": -63954328.97640241,\n  \"bestandsvergütung\": 4491182.578114912,\n  \"maxLaufzeitVergütung\": 47496590\n }\n]"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/VermittlerGesellschaften",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												"VermittlerGesellschaften"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"consectetur qui\",\n \"title\": \"cillum in\",\n \"status\": -9621217,\n \"detail\": \"minim in\",\n \"instance\": \"sit commodo dolor\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/VermittlerBackend/VermittlerGesellschaften",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"VermittlerBackend",
+												"VermittlerGesellschaften"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"consectetur qui\",\n \"title\": \"cillum in\",\n \"status\": -9621217,\n \"detail\": \"minim in\",\n \"instance\": \"sit commodo dolor\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Stammdaten",
+					"item": [
+						{
+							"name": "/api/Stammdaten/DokumentArt",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Admin_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Stammdaten/DokumentArt",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Stammdaten",
+										"DokumentArt"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Stammdaten/art",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Stammdaten",
+												"art"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": -72361528,\n  \"name\": \"proident minim amet\"\n },\n {\n  \"id\": 10262144,\n  \"name\": \"sint dolore officia\"\n }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/Stammdaten/Laender",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Admin_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Stammdaten/Laender",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Stammdaten",
+										"Laender"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Stammdaten/Laender",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Stammdaten",
+												"Laender"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": -86536473,\n  \"name\": \"aliqua in dolor\"\n },\n {\n  \"id\": -91112066,\n  \"name\": \"mollit aliquip quis v\"\n }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/Stammdaten/Beruf",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Admin_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Stammdaten/Beruf",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Stammdaten",
+										"Beruf"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Stammdaten/Beruf",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Stammdaten",
+												"Beruf"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 10640378,\n  \"name\": \"cupidatat\"\n },\n {\n  \"id\": 51257906,\n  \"name\": \"reprehenderit Excepteur veniam amet\"\n }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/Stammdaten/Titel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Admin_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Stammdaten/Titel",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Stammdaten",
+										"Titel"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Client Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Stammdaten/Titel",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Stammdaten",
+												"Titel"
+											]
+										}
+									},
+									"status": "Unsupported Media Type",
+									"code": 415,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"ipsum pariatur\",\n \"title\": \"veniam nulla\",\n \"status\": -38497174,\n \"detail\": \"nulla ea incididunt Ut\",\n \"instance\": \"eu tempor\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Stammdaten/Titel",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Stammdaten",
+												"Titel"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"ipsum pariatur\",\n \"title\": \"veniam nulla\",\n \"status\": -38497174,\n \"detail\": \"nulla ea incididunt Ut\",\n \"instance\": \"eu tempor\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Stammdaten/Titel",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Stammdaten",
+												"Titel"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": -61696680,\n  \"name\": \"do anim\"\n },\n {\n  \"id\": 83813713,\n  \"name\": \"velit voluptate\"\n }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/api/WeatherForecast",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/WeatherForecast",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/WeatherForecast",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"WeatherForecast"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"date\": \"1979-03-13T08:36:15.686Z\",\n  \"temperatureC\": 87998585,\n  \"temperatureF\": 26355880,\n  \"summary\": \"ipsum consectetur dolore exercitation\"\n },\n {\n  \"date\": \"2010-07-19T20:20:10.014Z\",\n  \"temperatureC\": 68865226,\n  \"temperatureF\": -97655686,\n  \"summary\": \"sed Duis proident\"\n }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var baseUrl = pm.environment.get(\"baseUrl\");",
+					"",
+					"pm.collectionVariables.set(\"baseUrl\", baseUrl);",
+					"",
+					"var current_timestamp = new Date();",
+					"var current_timestamp_plus_three_days = new Date();",
+					"current_timestamp_plus_three_days.setDate(current_timestamp.getDate() + 4);",
+					"",
+					"",
+					"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());",
+					"postman.setEnvironmentVariable(\"current_timestamp_plus_three_days\", current_timestamp_plus_three_days.toISOString());"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		},
+		{
+			"key": "NeuRegistrierterVermittlerId",
+			"value": ""
+		}
+	]
+}

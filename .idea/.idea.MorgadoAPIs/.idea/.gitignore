@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/contentModel.xml
+/.idea.MorgadoAPIs.iml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../:\CodingProjects\NettoAPI-Github\.idea\.idea.MorgadoAPIs\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
